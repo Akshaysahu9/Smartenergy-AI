@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.local
+.env*.local
+
+# Build
+.next/
+dist/
+build/
+*.egg-info/
+
+# ML artifacts (large - optional commit)
+ml/data/raw/
+ml/data/synthetic_hourly.csv
+*.h5
+*.pkl
+*.npy
+!ml/models/.gitkeep
+!ml/models/metrics.json
+
+# Local sqlite / stray training output
+apps/api/smartenergy.db
+models/
+data/
+
+# Editor configs
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Reports generated
+apps/api/reports_output/
+*.pdf
+
+# Logs
+*.log
+
+# Python
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Docker
+postgres_data/

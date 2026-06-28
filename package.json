@@ -1,0 +1,15 @@
+{
+  "name": "smartenergy-ai",
+  "private": true,
+  "version": "1.0.0",
+  "description": "SmartEnergy AI — Intelligent Smart Meter Monitoring & Energy Analytics Platform",
+  "scripts": {
+    "dev:web": "npm run dev --prefix apps/web",
+    "dev:api": "cd apps/api && uvicorn app.main:app --reload --port 8000",
+    "build:web": "npm run build --prefix apps/web",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "seed": "cd apps/api && python scripts/seed.py",
+    "train:ml": "python ml/training/train_models.py"
+  }
+}
