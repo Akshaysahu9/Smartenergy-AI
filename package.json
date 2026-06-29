@@ -2,7 +2,12 @@
   "name": "smartenergy-ai",
   "private": true,
   "version": "1.0.0",
-  "description": "SmartEnergy AI — Intelligent Smart Meter Monitoring & Energy Analytics Platform",
+  "description": "SmartEnergy — smart meter monitoring and energy analytics platform",
+  "author": "Akshay Sahu <Akshayguptasahu@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Akshaysahu9/Smartenergy-AI.git"
+  },
   "scripts": {
     "dev:web": "npm run dev --prefix apps/web",
     "dev:api": "cd apps/api && set PYTHONPATH=.&& python -m uvicorn app.main:app --host 127.0.0.1 --port 8001",

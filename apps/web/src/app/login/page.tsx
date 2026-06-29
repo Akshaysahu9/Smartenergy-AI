@@ -61,7 +61,7 @@ export default function LoginPage() {
           </ul>
         </div>
 
-        <p className="text-xs text-gray-600">© 2026 SmartEnergy · Energy Management Platform</p>
+        <p className="text-xs text-gray-600">© 2026 SmartEnergy · Akshay Sahu</p>
       </div>
 
       <div className="flex flex-1 items-center justify-center px-6 py-12">

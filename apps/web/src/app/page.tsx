@@ -167,8 +167,19 @@ export default function LandingPage() {
       </section>
 
       <footer className="border-t border-gray-200 py-8 text-center text-sm text-gray-500">
-        <p className="font-medium text-gray-700">SmartEnergy Platform</p>
-        <p className="mt-1">© 2026 SmartEnergy. All rights reserved.</p>
+        <p className="font-medium text-gray-700">SmartEnergy</p>
+        <p className="mt-1">
+          Built by{" "}
+          <a
+            href="https://github.com/Akshaysahu9"
+            className="text-emerald-700 hover:text-emerald-800"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Akshay Sahu
+          </a>
+        </p>
+        <p className="mt-1 text-xs">© 2026 · Portfolio project</p>
       </footer>
     </div>
   );

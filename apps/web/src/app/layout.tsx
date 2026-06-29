@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-geist-sans" });
 
 export const metadata: Metadata = {
   title: "SmartEnergy — Energy Monitoring",
-  description: "AI-powered smart meter monitoring, forecasting, and energy analytics platform",
+  description: "Smart meter monitoring, billing estimates, and consumption analytics for Indian homes and small businesses.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

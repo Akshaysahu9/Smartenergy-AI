@@ -6,6 +6,8 @@ Live dashboard, consumption insights, bill forecasting, alerts, and IoT meter in
 
 **Author:** [Akshay Sahu](https://github.com/Akshaysahu9)
 
+Full-stack portfolio project — designed, built, and deployed end to end (FastAPI backend on Railway, Next.js frontend on Vercel, PostgreSQL, Docker, GitHub Actions CI).
+
 ---
 
 ## Live Demo
@@ -265,7 +267,7 @@ Interactive docs: `/docs` (Swagger) · `/redoc`
 
 ## License
 
-MIT — see [LICENSE](./LICENSE) if present, otherwise free to use with attribution.
+MIT © [Akshay Sahu](https://github.com/Akshaysahu9) — see [LICENSE](./LICENSE).
 
 ---
 

@@ -18,7 +18,7 @@ async def ensure_demo_account(db: AsyncSession) -> None:
         user = User(
             email=DEMO_EMAIL,
             password_hash=hash_password(DEMO_PASSWORD),
-            name="Demo User",
+            name="Demo Account",
         )
         db.add(user)
         await db.commit()
