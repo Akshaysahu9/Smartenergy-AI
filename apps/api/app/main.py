@@ -1,4 +1,5 @@
 import asyncio
+import contextlib
 import logging
 from contextlib import asynccontextmanager
 
@@ -19,6 +20,8 @@ logger = logging.getLogger(__name__)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    simulator_meter_ids: list[str] = []
+
     try:
         async with engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
@@ -35,14 +38,26 @@ async def lifespan(app: FastAPI):
                     logger.exception("Demo seed skipped")
 
             result = await db.execute(select(Meter))
-            for meter in result.scalars().all():
-                if (getattr(meter, "data_source", None) or "simulated") == "simulated":
-                    simulator.start(str(meter.id), AsyncSessionLocal)
+            simulator_meter_ids = [
+                str(m.id)
+                for m in result.scalars().all()
+                if (getattr(m, "data_source", None) or "simulated") == "simulated"
+            ]
     except Exception:
         logger.exception("Startup tasks failed — API will still start")
 
+    async def _start_simulators():
+        await asyncio.sleep(0.5)
+        for meter_id in simulator_meter_ids:
+            simulator.start(meter_id, AsyncSessionLocal)
+
+    simulators_task = asyncio.create_task(_start_simulators())
+
     yield
 
+    simulators_task.cancel()
+    with contextlib.suppress(asyncio.CancelledError):
+        await simulators_task
     for task in list(simulator._tasks.values()):
         task.cancel()
     await asyncio.gather(*simulator._tasks.values(), return_exceptions=True)
@@ -74,9 +89,4 @@ app.include_router(analytics.router)
 
 @app.get("/health")
 async def health():
-    import os
-    return {
-        "status": "ok",
-        "service": "smartenergy-ai-api",
-        "port": os.environ.get("PORT", "8000"),
-    }
+    return {"status": "ok", "service": "smartenergy-api"}

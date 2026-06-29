@@ -52,8 +52,13 @@ python -m venv .venv
 .venv\Scripts\activate          # Windows
 pip install -r requirements.txt
 copy .env.example .env
-uvicorn app.main:app --reload --port 8001
+set PYTHONPATH=.
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8001
 ```
+
+Or from repo root: `npm run dev:api`
+
+**Note:** Avoid `--reload` on Windows with SQLite — it can lock the database.
 
 ### Frontend
 

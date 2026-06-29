@@ -24,7 +24,7 @@ async def ensure_demo_account(db: AsyncSession) -> None:
         await db.commit()
         await db.refresh(user)
 
-    seed_days = 1 if os.getenv("RAILWAY_ENVIRONMENT") else 7
+    seed_days = 1 if os.getenv("RAILWAY_ENVIRONMENT") else 2
 
     result = await db.execute(select(Meter).where(Meter.user_id == user.id))
     meter = result.scalar_one_or_none()
@@ -46,4 +46,3 @@ async def ensure_demo_account(db: AsyncSession) -> None:
     meter.data_source = "simulated"
     meter.connection_status = "connected"
     await db.commit()
-    await generate_historical_readings(db, meter.id, days=seed_days)

@@ -202,6 +202,11 @@ async def generate_historical_readings(
                 frequency=round(50 + random.uniform(-0.15, 0.15), 2),
             )
         )
+        if len(readings) >= 200:
+            db.add_all(readings)
+            await db.commit()
+            readings.clear()
 
-    db.add_all(readings)
-    await db.commit()
+    if readings:
+        db.add_all(readings)
+        await db.commit()

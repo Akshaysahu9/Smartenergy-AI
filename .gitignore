@@ -25,6 +25,10 @@ ml/data/synthetic_hourly.csv
 
 # Local sqlite / stray training output
 apps/api/smartenergy.db
+apps/api/smartenergy.db-wal
+apps/api/smartenergy.db-shm
+*.db-wal
+*.db-shm
 models/
 data/
 
